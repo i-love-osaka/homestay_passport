@@ -1,0 +1,35 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+{% block content %}
+<div class="module">
+    <h2>订单信息</h2>
+    <table class="admin-table" style="width:100%;border-collapse:collapse;">
+        <tr><th style="width:160px;">订单号</th><td>{{ guest.order_no }}</td></tr>
+        <tr><th>房源</th><td>{{ guest.house }}</td></tr>
+        <tr><th>客人姓名</th><td>{{ guest.name }}</td></tr>
+        <tr><th>电话号码</th><td>{{ guest.phone }}</td></tr>
+        <tr><th>职业</th><td>{{ guest.job }}</td></tr>
+        <tr><th>入住人数</th><td>{{ guest.occupancy }}</td></tr>
+        <tr><th>入住日期</th><td>{{ guest.check_in_date }}</td></tr>
+        <tr><th>退房日期</th><td>{{ guest.check_out_date }}</td></tr>
+        <tr><th>订单来源</th><td>{{ guest.source }}</td></tr>
+        <tr><th>订单金额</th><td>{{ guest.total_amount }}</td></tr>
+        <tr><th>支付时间</th><td>{{ guest.paid_at|default:"-" }}</td></tr>
+        <tr><th>订单状态</th><td>{{ guest.status }}</td></tr>
+        <tr><th>创建时间</th><td>{{ guest.created_at }}</td></tr>
+    </table>
+</div>
+<div class="module">
+    <h2>护照照片</h2>
+    <br />
+    {% if passports %}
+        <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:10px;max-width:1220px;">
+        {% for p in passports %}
+            <div style="border:1px solid #ddd;padding:4px;"><a href="{{ p.file_path.url }}" target="_blank"><img src="{{ p.thumb_url }}" style="width:100%;height:120px;object-fit:cover;"></a></div>
+        {% endfor %}
+        </div>
+    {% else %}
+        <p style="color:#888;">暂无护照照片</p>
+    {% endif %}
+</div>
+{% endblock %}

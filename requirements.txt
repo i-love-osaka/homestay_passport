@@ -1,0 +1,10 @@
+Django==5.0.6
+Pillow==10.0.0
+pillow-heif==0.16.0
+openpyxl==3.1.5
+numpy
+requests
+pytesseract
+opencv-python-headless<5
+psycopg[binary]
+python-dotenv

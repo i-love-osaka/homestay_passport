@@ -1,0 +1,102 @@
+/* 列表单元格内容水平居中 */
+#result_list th, #result_list td {text-align: center}
+#result_list th div {margin: auto}
+
+/* 能用，ID,CheckBox */
+#result_list .column-id div, #result_list .field-id,
+#result_list .column-id_display div, #result_list .field-id_display,
+#result_list .action-checkbox-column div, #result_list .action-checkbox {width:40px!important}
+
+/* 通用，密码 */
+#result_list .column-password div, #result_list .field-password {width:60px}
+
+/* 通用，语言 */
+#result_list .column-language div, #result_list .field-language {width: 80px}
+
+/* 能用，民宿代码，民宿名称 */
+#result_list .column-code div, #result_list .field-code,
+#result_list .column-house div, #result_list .field-house {width: 100px}
+
+/* 通用，创建时间，更新时间 */
+#result_list .column-created_at div, #result_list .field-created_at,
+#result_list .column-updated_at div, #result_list .field-updated_at {width: 150px}
+
+/* 通用，标记 */
+#result_list .column-slug div, #result_list .field-slug {width: 160px}
+
+/* 客人列表 */
+.model-guest #result_list .column-phone div, .model-guest #result_list .field-phone {width:140px}
+.model-guest #result_list .column-occupancy div, .model-gues #result_listt .field-occupancy,
+.model-guest #result_list .column-message_status div, .model-guest #result_list .field-message_status {width:50px}
+.model-guest #result_list .column-check_in_date div, .model-guest #result_list .field-check_in_date,
+.model-guest #result_list .column-check_out_date div, .model-guest #result_list .field-check_out_date {width:120px}
+.model-guest #result_list .column-status div, .model-guest #result_list .field-status {width:80px}
+.model-guest #result_list .column-detail_button div, .model-guest #result_list .field-detail_button {width:60px}
+
+/* 房源列表 */
+.model-house #result_list .column-cover_preview div, .model-house #result_list .field-cover_preview {width: 160px}
+.model-house #result_list .column-name div, .model-house #result_list .field-name,
+.model-house #result_list .column-price div, .model-house #result_list .field-price {width: 100px}
+.model-house #result_list .column-rooms div, .model-house #result_list .field-rooms,
+.model-house #result_list .column-city div, .model-house #result_list .field-city,
+.model-house #result_list .column-beds div, .model-house #result_list .field-beds,
+.model-house #result_list .column-max_guests div, .model-house #result_list .field-max_guests,
+.model-house #result_list .column-cleaning_fee div, .model-house #result_list .field-cleaning_fee {width: 80px}
+.model-house #result_list .column-kitchen_flag div, .model-house #result_list .field-kitchen_flag,
+.model-house #result_list .column-active_flag div, .model-house #result_list .field-active_flag,
+.model-house #result_list .column-tub_flag div, .model-house #result_list .field-tub_flag {width: 40px}
+
+/* 锁列表 */
+.model-lock #result_list .column-account div, .model-lock #result_list .field-account {width: 100px}
+.model-lock #result_list .column-remark div, .model-lock #result_list .field-remark {width: 140px}
+.model-lock #result_list .column-unlock_button div, .model-lock #result_list .field-unlock_button {width: 60px}
+
+/* 门锁绑定 */
+.model-houselock #result_list .column-lock div, .model-houselock #result_list .field-lock {width: 160px}
+
+/* 管理员 */
+.model-user #result_list .column-username div, .model-user #result_list .field-username {width:140px}
+.model-user #result_list .column-email div, .model-user #result_list .field-email {width:200px}
+.model-user #result_list .column-first_name div, .model-user #result_list .field-first_name,
+.model-user #result_list .column-last_name div, .model-user #result_list .field-last_name {width:100px}
+.model-user #result_list .column-is_staff div, .model-user #result_list .field-is_staff {width:80px}
+
+/* 管理组 */
+.model-group .column-__str__ div, .model-group .field-__str__ {width:80px}
+
+/* 管理员日志 */
+.model-logentry .column-action_time div, .model-logentry .field-action_time {width:160px}
+.model-logentry .column-user div, .model-logentry .field-user,
+.model-logentry .column-action_flag_display div, .model-logentry .field-action_flag_display {width:60px}
+.model-logentry .column-content_type div, .model-logentry .field-content_type {width:140px}
+.model-logentry .column-object_link div, .model-logentry .field-object_link,
+.model-logentry .column-short_message div, .model-logentry .field-short_message {width:220px}
+
+/* 需要特别声明左对齐 */
+.model-contact .field-name,
+.model-job .field-title,
+.model-media .field-preview,
+.model-contact .field-title,
+.model-article .field-title,
+.model-product .field-title,
+.model-house .field-cover_preview,
+.model-logentry .field-short_message,
+.model-logentry .field-object_link,
+.model-logentry .field-content_type,
+.model-page .field-title {text-align: left !important}
+
+/* 菜单搜索 */
+#nav-filter {margin:5px; width: 265px; line-height: 26px;}
+
+/* 列表行居中 */
+#result_list td,
+#result_list th {vertical-align: middle !important; padding-top: 14px !important; padding-bottom: 14px !important;}
+
+/* 下拉宽度 */
+.actions select[name="action"] {min-width: 200px;}
+
+/* checkbox 本身 */
+input[type="checkbox"] {vertical-align: middle !important; position: relative; top: -3px;}
+
+/* checkbox 右侧文字 */
+label.vCheckboxLabel {vertical-align: middle !important; line-height: 1.2 !important; margin-left: 4px;}

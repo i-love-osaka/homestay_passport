@@ -1,0 +1,17 @@
+services:
+  web:
+    build: .
+    container_name: django_sizuya_passport
+    restart: unless-stopped
+
+    environment:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUNBUFFERED: "1"
+
+    ports:
+      - "33204:8000"
+    volumes:
+      - .:/code
+      - /Users/mr.ben/Desktop/Project/Python/Django/33200-sizuya.net/sizuya_net_media/media:/code/media
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"

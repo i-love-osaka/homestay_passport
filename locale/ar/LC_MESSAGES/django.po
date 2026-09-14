@@ -1,0 +1,238 @@
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-17 05:36+0000\n"
+"Language: ar\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: passport/views.py:29 passport/views.py:354
+msgid "Property not available"
+msgstr "العقار غير متاح"
+
+#: passport/views.py:46
+msgid "Image could not be read. Please upload a clearer photo."
+msgstr "تعذر قراءة الصورة. يرجى رفع صورة أوضح."
+
+#: passport/views.py:48
+msgid "Image resolution is too low. Please upload a clearer photo."
+msgstr "دقة الصورة منخفضة جدًا. يرجى رفع صورة أوضح."
+
+#: passport/views.py:57
+msgid ""
+"No clear passport information page was detected. Please upload the page with "
+"personal information."
+msgstr "لم يتم اكتشاف صفحة معلومات جواز سفر واضحة. يرجى رفع الصفحة التي تحتوي على المعلومات الشخصية."
+
+#: passport/views.py:61
+msgid ""
+"The passport machine-readable area was not clear enough. Please keep the "
+"bottom code lines visible."
+msgstr "منطقة القراءة الآلية في جواز السفر غير واضحة بما يكفي. يرجى إبقاء سطري الرموز السفليين ظاهرين."
+
+#: passport/views.py:65
+msgid ""
+"The passport photo page was incomplete or blurry. Please keep the whole page "
+"visible."
+msgstr "صفحة صورة جواز السفر غير مكتملة أو ضبابية. يرجى إبقاء الصفحة كاملة ظاهرة."
+
+#: passport/views.py:69
+msgid ""
+"The uploaded photo does not look like a valid passport photo. Please retake "
+"it clearly."
+msgstr "الصورة المرفوعة لا تبدو كصورة جواز سفر صالحة. يرجى إعادة التقاطها بوضوح."
+
+#: passport/views.py:72
+#, python-format
+msgid "Passport photo %(index)s is invalid: %(reason)s"
+msgstr "صورة جواز السفر رقم %(index)s غير صالحة: %(reason)s"
+
+#: passport/views.py:128
+msgid "Missing property parameter"
+msgstr "معلمة الخاصية مفقودة"
+
+#: passport/views.py:138
+msgid "Guest Information"
+msgstr "معلومات الضيف"
+
+#: passport/views.py:155
+msgid "Please enter your name"
+msgstr "يرجى إدخال اسمك"
+
+#: passport/views.py:157
+msgid "Please enter your occupation"
+msgstr "يرجى إدخال مهنتك"
+
+#: passport/views.py:159
+msgid "Please enter your phone number"
+msgstr "يرجى إدخال رقم هاتفك"
+
+#: passport/views.py:161
+msgid "Number of guests must be between 1 and 10"
+msgstr "يجب أن يكون عدد الضيوف بين 1 و10!"
+
+#: passport/views.py:167
+msgid "Invalid date format"
+msgstr "تنسيق التاريخ غير صالح."
+
+#: passport/views.py:170
+msgid "Check-out date must be after check-in date"
+msgstr "يجب أن يكون تاريخ تسجيل المغادرة بعد تاريخ تسجيل الوصول."
+
+#: passport/views.py:177 templates/passport/form.html:315
+msgid "Please select a photo to upload!"
+msgstr "يرجى اختيار صورة لرفعها!"
+
+#: passport/views.py:179
+msgid "Invalid image format"
+msgstr "تنسيق الصورة غير صالح!"
+
+#: passport/views.py:261
+msgid "No lock is configured for this property"
+msgstr "لا توجد أي قفل مهيأ لهذا العقار"
+
+#: passport/views.py:327
+#, python-format
+msgid "Temporary password delivery failed: %(detail)s"
+msgstr "فشل إرسال كلمة المرور المؤقتة: %(detail)s"
+
+#: passport/views.py:328
+msgid "unknown error"
+msgstr "خطأ غير معروف"
+
+#: passport/views.py:337
+msgid "Submitted successfully, thank you!"
+msgstr "تم الإرسال بنجاح، شكرًا لتعاونكم!"
+
+#: passport/views.py:362
+msgid "Check-in Information"
+msgstr "معلومات تسجيل الوصول"
+
+#: passport/views.py:365
+msgid "Welcome to Sizuya Homestay. Please remember your door code:"
+msgstr "مرحبًا بكم في نُزل سيزويا. لتسهيل دخولكم، يرجى تذكّر رمز الدخول الخاص بكم:"
+"مرحبًا بكم في نُزل سيزويا. لتسهيل دخولكم، يرجى تذكّر رمز الدخول الخاص بكم:"
+
+#: templates/passport/form.html:30
+msgid "Select Language"
+msgstr "اختر اللغة"
+
+#: templates/passport/form.html:40
+msgid "Your Name"
+msgstr "الاسم"
+
+#: templates/passport/form.html:41
+msgid "Enter your name"
+msgstr "أدخل اسمك"
+
+#: templates/passport/form.html:44
+msgid "Occupation"
+msgstr "المهنة"
+
+#: templates/passport/form.html:45
+msgid "Enter your occupation"
+msgstr "أدخل مهنتك"
+
+#: templates/passport/form.html:48
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+#: templates/passport/form.html:50
+msgid "Enter your phone number"
+msgstr "أدخل رقم هاتفك"
+
+#: templates/passport/form.html:53 templates/passport/form.html:56
+msgid "Check-in Date"
+msgstr "تاريخ تسجيل الوصول"
+
+#: templates/passport/form.html:58
+msgid "Check-out Date"
+msgstr "تاريخ تسجيل المغادرة"
+
+#: templates/passport/form.html:63
+msgid "Occupancy"
+msgstr "عدد النزلاء"
+
+#: templates/passport/form.html:69
+msgid "View Example"
+msgstr "عرض المثال"
+
+#: templates/passport/form.html:74 templates/passport/form.html:110
+msgid "Passport Photo/My Number Card"
+msgstr "صورة جواز السفر/بطاقة الرقم الشخصي"
+
+#: templates/passport/form.html:81 templates/passport/form.html:217
+#: templates/passport/form.html:352
+msgid "Submit"
+msgstr "إرسال"
+
+#: templates/passport/form.html:97
+msgid "Calendar_file"
+msgstr "ar"
+
+#: templates/passport/form.html:147 templates/passport/form.html:163
+msgid "Calendar_Language"
+msgstr "ar"
+
+#: templates/passport/form.html:174
+msgid "us"
+msgstr "ar"
+
+#: templates/passport/form.html:204 templates/passport/form.html:323
+msgid "Submitting..."
+msgstr "جارٍ الإرسال..."
+
+#: templates/passport/form.html:233
+msgid ""
+"Please edit your passport photo according to the sample image. Make sure it "
+"is clear and unobstructed."
+msgstr ""
+"يرجى تعديل صورة جواز السفر وفقًا للصورة النموذجية، والتأكد من أنها واضحة "
+"وخالية من أي عوائق."
+
+#: templates/passport/form.html:253
+msgid "Please enter your name!"
+msgstr "يرجى إدخال اسمك!"
+
+#: templates/passport/form.html:261
+msgid "Please enter your occupation!"
+msgstr "يرجى إدخال مهنتك!"
+
+#: templates/passport/form.html:269
+msgid "Please enter your phone number!"
+msgstr "يرجى إدخال رقم هاتفك!"
+
+#: templates/passport/form.html:283
+msgid "Invalid phone number!"
+msgstr "تنسيق رقم الهاتف غير صحيح!"
+
+#: templates/passport/form.html:297
+msgid "Please choose a check-in date."
+msgstr "يرجى اختيار تاريخ تسجيل الوصول."
+
+#: templates/passport/form.html:305
+msgid "Please choose a check-out date."
+msgstr "يرجى اختيار تاريخ تسجيل المغادرة."
+
+#: templates/passport/result.html:11
+msgid "Continue Upload"
+msgstr "متابعة التحميل"
+
+#~ msgid "Welcome to Sizuya"
+#~ msgstr "مرحبًا بكم في سيزويا"
+
+#~ msgid "Select Photo"
+#~ msgstr "اختر صورة"
+
+#~ msgid "Invalid passport image"
+#~ msgstr "صورة جواز السفر غير صالحة!"
+
+#~ msgid ""
+#~ "Please upload a clear, upright passport photo. Cropping/editing is "
+#~ "recommended!Problem photo number:{code}"
+#~ msgstr ""
+#~ "يرجى رفع صورة واضحة ومستقيمة لجواز السفر. يُنصح بالقص أو التعديل مسبقًا! "
+#~ "رقم الصورة التي تحتوي على مشكلة: {code}"
+
+#~ msgid "<br />and the storage cabinet code is: "
+#~ msgstr "<br />رمز خزانة التخزين هو: "

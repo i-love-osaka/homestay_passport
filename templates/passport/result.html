@@ -1,0 +1,14 @@
+{% extends "passport/base.html" %}
+{% load i18n %}
+{% load static %}
+{% block styles %}{{ block.super }}{% endblock %}{% block body %}
+        <div class="card-body p-4">
+            <div lable="结果信息" class=" text-center">{{ contents|safe }}</div>
+            {% if show_continue %}
+            <form method="post" action="{% url 'passport_continue_upload' %}" class="text-center mt-4">
+                {% csrf_token %}
+                <input type="hidden" name="house_code" value="{{ house.code }}">
+                <button type="submit" class="btn btn-primary btn-lg px-5">{% trans "Continue Upload" %}</button>
+            </form>
+            {% endif %}
+        </div>{% endblock %}
