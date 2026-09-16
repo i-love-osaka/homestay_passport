@@ -19,6 +19,15 @@ docker-compose*.yml
 # ===== 系统文件 =====
 .DS_Store
 
+# ===== 虚拟环境（宿主上的 .venv 绝不能进镜像）=====
+.venv
+venv
+env
+
+# ===== 编辑器 / 远程开发产物 =====
+.vscode
+.vscode-server
+
 # ===== Python 缓存 / 编译产物 =====
 __pycache__
 *.py[cod]
