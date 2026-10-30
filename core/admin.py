@@ -51,6 +51,53 @@ class HouseActiveFilter(admin.SimpleListFilter):
         return queryset
 
 
+class GuestCreatedYearFilter(admin.SimpleListFilter):
+    title = "创建年份"
+    parameter_name = "created_year"
+
+    def lookups(self, request, model_admin):
+        years = (
+            model_admin.get_queryset(request)
+            .dates("created_at", "year", order="DESC")
+        )
+        return tuple((str(value.year), str(value.year)) for value in years)
+
+    def queryset(self, request, queryset):
+        value = self.value()
+        if value and value.isascii() and value.isdigit():
+            year = int(value)
+            if 1 <= year <= 9999:
+                return queryset.filter(created_at__year=year)
+        return queryset
+
+
+class GuestCreatedMonthFilter(admin.SimpleListFilter):
+    title = "创建月份"
+    parameter_name = "created_month"
+
+    def lookups(self, request, model_admin):
+        year = request.GET.get("created_year", "")
+        queryset = model_admin.get_queryset(request)
+        if year.isascii() and year.isdigit() and 1 <= int(year) <= 9999:
+            queryset = queryset.filter(created_at__year=int(year))
+            months = queryset.dates("created_at", "month", order="ASC")
+            available_months = {value.month for value in months}
+        else:
+            available_months = set(range(1, 13))
+        return tuple(
+            (str(month), f"{month}月")
+            for month in range(1, 13)
+            if month in available_months
+        )
+
+    def queryset(self, request, queryset):
+        value = self.value()
+        if value and value.isascii() and value.isdigit():
+            month = int(value)
+            if 1 <= month <= 12:
+                return queryset.filter(created_at__month=month)
+        return queryset
+
 # =========================================================
 # 门锁（Lock）
 # =========================================================
@@ -272,7 +319,12 @@ class GuestAdmin(admin.ModelAdmin):
         "detail_button",
         "blank_col",
     )
-    list_filter = ("house", HouseActiveFilter, "created_at")
+    list_filter = (
+        HouseActiveFilter,
+        "house",
+        GuestCreatedYearFilter,
+        GuestCreatedMonthFilter,
+    )
     search_fields = ("name", "phone")
     list_display_links = None
     ordering = ("-id",)
