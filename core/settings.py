@@ -19,9 +19,9 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 # ==================================================================
 DEBUG = os.environ.get("DJANGO_DEBUG", "False").lower() == "true"
 
-# sitemap专用域名
+# sitemap 专用域名
 # ==================================================================
-SITE_DOMAIN = os.environ.get("DJANGO_DOMAIN", "passport.sizuya.net")
+SITE_DOMAIN = os.environ.get("DJANGO_DOMAIN", "localhost")
 
 # 自动补齐末尾/
 # ==================================================================
@@ -33,9 +33,9 @@ X_FRAME_OPTIONS = "DENY"
 
 # HSTS
 # ==================================================================
-SECURE_HSTS_SECONDS = 31536000
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_SECONDS = 0 if DEBUG else 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
+SECURE_HSTS_PRELOAD = not DEBUG
 
 # Session安全
 # ==================================================================
@@ -44,8 +44,8 @@ CSRF_COOKIE_HTTPONLY = True
 
 # Cookies安全
 # ==================================================================
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
 
 # 强制Content-Type
 # ==================================================================
@@ -111,19 +111,23 @@ USE_TZ = True
 # HOSTS校验
 # ==================================================================
 ALLOWED_HOSTS = [
-    SITE_DOMAIN,
-    "passport.sizuya.net",
-    "127.0.0.1",
-    "localhost",
+    host.strip()
+    for host in os.environ.get(
+        "DJANGO_ALLOWED_HOSTS",
+        f"{SITE_DOMAIN},127.0.0.1,localhost",
+    ).split(",")
+    if host.strip()
 ]
 
 # CSRF校验
 # ==================================================================
 CSRF_TRUSTED_ORIGINS = [
-    f"https://{SITE_DOMAIN}",
-    "https://passport.sizuya.net",
-    "http://127.0.0.1",
-    "http://localhost",
+    origin.strip()
+    for origin in os.environ.get(
+        "DJANGO_CSRF_TRUSTED_ORIGINS",
+        f"https://{SITE_DOMAIN},http://127.0.0.1,http://localhost",
+    ).split(",")
+    if origin.strip()
 ]
 
 # 安装的应用
@@ -182,18 +186,24 @@ AUTH_PASSWORD_VALIDATORS = [
 # ==================================================================
 TTLOCK_ACCOUNTS = {
     "zhenghe": {
-        "CLIENT_ID": "[REDACTED]",
-        "CLIENT_SECRET": "[REDACTED]",
-        "USERNAME": "[REDACTED]",
-        "PASSWORD": "[REDACTED]",
-        "BASE_URL": "https://cnapi.ttlock.com",
+        "CLIENT_ID": os.environ.get("TTLOCK_ZHENGHE_CLIENT_ID", ""),
+        "CLIENT_SECRET": os.environ.get("TTLOCK_ZHENGHE_CLIENT_SECRET", ""),
+        "USERNAME": os.environ.get("TTLOCK_ZHENGHE_USERNAME", ""),
+        "PASSWORD": os.environ.get("TTLOCK_ZHENGHE_PASSWORD", ""),
+        "BASE_URL": os.environ.get(
+            "TTLOCK_ZHENGHE_BASE_URL",
+            "https://cnapi.ttlock.com",
+        ),
     },
     "sizuya": {
-        "CLIENT_ID": "[REDACTED]",
-        "CLIENT_SECRET": "[REDACTED]",
-        "USERNAME": "[REDACTED]",
-        "PASSWORD": "[REDACTED]",
-        "BASE_URL": "https://api.ttlock.com",
+        "CLIENT_ID": os.environ.get("TTLOCK_SIZUYA_CLIENT_ID", ""),
+        "CLIENT_SECRET": os.environ.get("TTLOCK_SIZUYA_CLIENT_SECRET", ""),
+        "USERNAME": os.environ.get("TTLOCK_SIZUYA_USERNAME", ""),
+        "PASSWORD": os.environ.get("TTLOCK_SIZUYA_PASSWORD", ""),
+        "BASE_URL": os.environ.get(
+            "TTLOCK_SIZUYA_BASE_URL",
+            "https://api.ttlock.com",
+        ),
     },
 }
 
@@ -205,9 +215,9 @@ DATABASES = {
         "CONN_MAX_AGE": 60,
         "NAME": os.environ.get("DB_NAME", "passport_db"),
         "USER": os.environ.get("DB_USER", "postgres"),
-        "PASSWORD": os.environ.get("DB_PASSWORD", "[REDACTED]"),
-        "HOST": os.environ.get("DB_HOST", "192.168.1.2"),
-        "PORT": os.environ.get("DB_PORT", "5433"),
+        "PASSWORD": os.environ.get("DB_PASSWORD", ""),
+        "HOST": os.environ.get("DB_HOST", "localhost"),
+        "PORT": os.environ.get("DB_PORT", "5432"),
     }
 }
 

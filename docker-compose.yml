@@ -1,20 +1,36 @@
 services:
   web:
-    build: . # 基于当前目录的 Dockerfile 构建镜像
-    container_name: django_sizuya_passport # 容器名称
-    restart: unless-stopped # 容器异常退出后自动重启
+    build: .
+    restart: unless-stopped
+    env_file:
+      - .env
     environment:
-      PYTHONDONTWRITEBYTECODE: "1" # 不生成 .pyc 文件
-      PYTHONUNBUFFERED: "1" # Python 输出不缓冲，日志实时显示
-      DJANGO_DEBUG: "True" # 开发环境建议开启 DEBUG
+      DB_HOST: db
+      DJANGO_DEBUG: ${DJANGO_DEBUG:-False}
     ports:
-      - "33204:8000" # 宿主机 33204 映射到容器 8000
+      - "${WEB_PORT:-33204}:8000"
     volumes:
-      - .:/code # 将当前项目目录挂载到容器 /code，保证本地修改立即同步
-      - /Users/mr.ben/Desktop/Project/Python/Django/33200-sizuya.net/sizuya_net_media/media:/code/media
-    command: python manage.py runserver 0.0.0.0:8000 # 直接用 Django 开发服务器启动，支持热重载
-    
-    
-    # docker compose exec web python manage.py makemigrations console
-    # docker compose exec web python manage.py makemigrations content
-    # docker compose exec web python manage.py migrate
+      - .:/code
+      - ./media:/code/media
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME:-passport_db}
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  postgres_data:
